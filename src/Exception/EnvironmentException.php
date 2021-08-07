@@ -80,6 +80,6 @@ class EnvironmentException extends \DomainException
 
         $message = static::getErrorMessageFromStatus($status);
 
-        return new static($message, $status, $previous);
+        return new self($message, $status, $previous);
     }
 }
