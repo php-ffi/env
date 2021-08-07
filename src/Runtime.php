@@ -97,7 +97,7 @@ final class Runtime
      */
     protected static function fetchConfig(): string
     {
-        $config = (string)(\ini_get(self::EXT_CONFIG_NAME) ?: '0');
+        $config = \ini_get(self::EXT_CONFIG_NAME) ?: '0';
 
         return \strtolower($config);
     }
