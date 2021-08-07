@@ -69,7 +69,7 @@ class EnvironmentException extends \DomainException
     /**
      * @param StatusType|null $status
      * @param \Throwable|null $previous
-     * @return static
+     * @return self
      */
     public static function fromStatus(
         #[ExpectedValues(valuesFromClass: Status::class)]
