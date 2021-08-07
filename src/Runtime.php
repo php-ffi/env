@@ -39,7 +39,7 @@ final class Runtime
     ): bool {
         $status ??= self::getStatus();
 
-        if ($status->isRuntimeAvailable()) {
+        if (self::isAvailable($status)) {
             return true;
         }
 
