@@ -1,8 +1,22 @@
 {
     "name": "ffi/env",
+    "type": "library",
     "description": "PHP FFI Environment",
     "license": "MIT",
     "keywords": ["ffi", "env", "environment"],
+    "support": {
+        "source": "https://github.com/php-ffi/env",
+        "issues": "https://github.com/php-ffi/env/issues",
+        "docs": "https://github.com/php-ffi/env/blob/master/README.md"
+    },
+    "authors": [
+        {
+            "name": "Nesmeyanov Kirill",
+            "email": "nesk@xakep.ru",
+            "homepage": "https://serafimarts.ru",
+            "role": "maintainer"
+        }
+    ],
     "require": {
         "php": ">=7.4"
     },
