@@ -57,5 +57,8 @@ To check the environment, it is recommended to use the `assert` functionality.
 use FFI\Env\Runtime;
 use FFI\Env\Exception\EnvironmentException;
 
-assert(Runtime::assertAvailable(), EnvironmentException::getErrorMessageFromStatus());
+assert(Runtime::assertAvailable());
+
+// Or using your own assertion error message:
+assert(Runtime::isAvailable(), EnvironmentException::getErrorMessageFromStatus());
 ```
