@@ -78,12 +78,10 @@ final class Runtime
             return Status::NOT_AVAILABLE;
         }
 
-        switch(self::fetchConfig()) {
-            case 'true':
+        switch (self::fetchConfig()) {
             case '1':
                 return Status::ENABLED;
 
-            case 'false':
             case '0':
                 return Status::DISABLED;
 
@@ -97,6 +95,9 @@ final class Runtime
      */
     protected static function fetchConfig(): string
     {
+        // - Returns "1" in case of 'ffi.enable=true' or 'ffi.enable=1' in php.ini
+        // - Returns "" (empty string) in case of 'ffi.enable=false' or 'ffi.enable=0' in php.ini
+        // - Returns "0" in case of direct execution `php -dffi.enable=0 file.php`
         $config = \ini_get(self::EXT_CONFIG_NAME) ?: '0';
 
         return \strtolower($config);
