@@ -1,5 +1,16 @@
 # FFI Environment
 
+<p align="center">
+    <a href="https://packagist.org/packages/ffi/env"><img src="https://poser.pugx.org/ffi/env/require/php?style=for-the-badge" alt="PHP 8.1+"></a>
+    <a href="https://packagist.org/packages/ffi/env"><img src="https://poser.pugx.org/ffi/env/version?style=for-the-badge" alt="Latest Stable Version"></a>
+    <a href="https://packagist.org/packages/ffi/env"><img src="https://poser.pugx.org/ffi/env/v/unstable?style=for-the-badge" alt="Latest Unstable Version"></a>
+    <a href="https://packagist.org/packages/ffi/env"><img src="https://poser.pugx.org/ffi/env/downloads?style=for-the-badge" alt="Total Downloads"></a>
+    <a href="https://raw.githubusercontent.com/php-ffi/env/master/LICENSE.md"><img src="https://poser.pugx.org/ffi/env/license?style=for-the-badge" alt="License MIT"></a>
+</p>
+<p align="center">
+    <a href="https://github.com/php-ffi/env/actions"><img src="https://github.com/php-ffi/env/workflows/build/badge.svg"></a>
+</p>
+
 A set of API methods for working with the FFI environment.
 
 ## Requirements
