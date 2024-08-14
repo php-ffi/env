@@ -42,7 +42,7 @@ class EnvironmentException extends \DomainException
      */
     public static function getErrorMessageFromStatus(
         #[ExpectedValues(valuesFromClass: Status::class)]
-        int $status = null
+        ?int $status = null
     ): string {
         switch ($status ?? Runtime::getStatus()) {
             case Status::NOT_AVAILABLE:
@@ -66,8 +66,8 @@ class EnvironmentException extends \DomainException
      */
     public static function fromStatus(
         #[ExpectedValues(valuesFromClass: Status::class)]
-        int $status = null,
-        \Throwable $previous = null
+        ?int $status = null,
+        ?\Throwable $previous = null
     ): self {
         $status ??= Runtime::getStatus();
 
