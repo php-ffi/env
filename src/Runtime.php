@@ -28,7 +28,7 @@ final class Runtime
      */
     public static function assertAvailable(
         #[ExpectedValues(valuesFromClass: Status::class)]
-        int $status = null
+        ?int $status = null
     ): bool {
         $status ??= self::getStatus();
 
@@ -48,7 +48,7 @@ final class Runtime
      */
     public static function isAvailable(
         #[ExpectedValues(valuesFromClass: Status::class)]
-        int $status = null
+        ?int $status = null
     ): bool {
         $status ??= self::getStatus();
 
