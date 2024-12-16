@@ -38,7 +38,6 @@ class EnvironmentException extends \DomainException
 
     /**
      * @param StatusType|null $status
-     * @return string
      */
     public static function getErrorMessageFromStatus(
         #[ExpectedValues(valuesFromClass: Status::class)]
@@ -61,8 +60,6 @@ class EnvironmentException extends \DomainException
 
     /**
      * @param StatusType|null $status
-     * @param \Throwable|null $previous
-     * @return self
      */
     public static function fromStatus(
         #[ExpectedValues(valuesFromClass: Status::class)]

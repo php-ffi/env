@@ -24,7 +24,6 @@ final class Runtime
 
     /**
      * @param StatusType|null $status
-     * @return bool
      */
     public static function assertAvailable(
         #[ExpectedValues(valuesFromClass: Status::class)]
@@ -44,7 +43,6 @@ final class Runtime
      * function interface headers execution/compilation or {@see false} instead.
      *
      * @param StatusType|null $status
-     * @return bool
      */
     public static function isAvailable(
         #[ExpectedValues(valuesFromClass: Status::class)]
@@ -67,7 +65,7 @@ final class Runtime
     #[ExpectedValues(valuesFromClass: Status::class)]
     public static function getStatus(): int
     {
-        if (! \extension_loaded(self::EXT_NAME)) {
+        if (!\extension_loaded(self::EXT_NAME)) {
             return Status::NOT_AVAILABLE;
         }
 
@@ -83,9 +81,6 @@ final class Runtime
         }
     }
 
-    /**
-     * @return string
-     */
     protected static function fetchConfig(): string
     {
         // - Returns "1" in case of 'ffi.enable=true' or 'ffi.enable=1' in php.ini
