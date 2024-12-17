@@ -6,6 +6,8 @@ namespace FFI\Env;
 
 /**
  * @psalm-type StatusType = Status::*
+ *
+ * @phpstan-type StatusType Status::*
  */
 final class Status
 {

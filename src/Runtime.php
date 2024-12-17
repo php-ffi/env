@@ -5,30 +5,29 @@ declare(strict_types=1);
 namespace FFI\Env;
 
 use FFI\Env\Exception\EnvironmentException;
-use JetBrains\PhpStorm\ExpectedValues;
 
 /**
  * @psalm-import-type StatusType from Status
+ *
+ * @phpstan-import-type StatusType from Status
  */
 final class Runtime
 {
     /**
-     * @var string
+     * @var non-empty-string
      */
     private const EXT_NAME = 'FFI';
 
     /**
-     * @var string
+     * @var non-empty-string
      */
     private const EXT_CONFIG_NAME = 'ffi.enable';
 
     /**
      * @param StatusType|null $status
      */
-    public static function assertAvailable(
-        #[ExpectedValues(valuesFromClass: Status::class)]
-        ?int $status = null
-    ): bool {
+    public static function assertAvailable(?int $status = null): bool
+    {
         $status ??= self::getStatus();
 
         if (self::isAvailable($status)) {
@@ -44,10 +43,8 @@ final class Runtime
      *
      * @param StatusType|null $status
      */
-    public static function isAvailable(
-        #[ExpectedValues(valuesFromClass: Status::class)]
-        ?int $status = null
-    ): bool {
+    public static function isAvailable(?int $status = null): bool
+    {
         $status ??= self::getStatus();
 
         if ($status === Status::CLI_ENABLED) {
@@ -62,7 +59,6 @@ final class Runtime
      *
      * @return StatusType
      */
-    #[ExpectedValues(valuesFromClass: Status::class)]
     public static function getStatus(): int
     {
         if (!\extension_loaded(self::EXT_NAME)) {
@@ -86,7 +82,11 @@ final class Runtime
         // - Returns "1" in case of 'ffi.enable=true' or 'ffi.enable=1' in php.ini
         // - Returns "" (empty string) in case of 'ffi.enable=false' or 'ffi.enable=0' in php.ini
         // - Returns "0" in case of direct execution `php -dffi.enable=0 file.php`
-        $config = \ini_get(self::EXT_CONFIG_NAME) ?: '0';
+        $config = \ini_get(self::EXT_CONFIG_NAME);
+
+        if ((bool) $config === false) {
+            return '0';
+        }
 
         return \strtolower($config);
     }
