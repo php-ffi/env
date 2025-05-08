@@ -48,7 +48,7 @@ final class Runtime
         $status ??= self::getStatus();
 
         if ($status === Status::CLI_ENABLED) {
-            return \strtolower(\PHP_SAPI) === 'cli';
+            return \in_array(\strtolower(\PHP_SAPI), ['cli', 'phpdbg', 'embed', 'micro'], true);
         }
 
         return $status === Status::ENABLED;
