@@ -44,7 +44,7 @@ abstract class TestCase extends BaseTestCase
         \proc_close($process);
 
         $lines = \array_values(\array_filter(\array_map('trim', \explode("\n", $output))));
-        $report = \json_decode((string) \end($lines), true);
+        $report = \unserialize((string) \end($lines), ['allowed_classes' => false]);
 
         if (!\is_array($report)) {
             self::fail('Unexpected probe output: ' . $output . $errors);

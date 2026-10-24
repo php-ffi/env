@@ -25,7 +25,7 @@ try {
     $asserted = false;
 }
 
-echo \json_encode([
+echo \serialize([
     'sapi' => \PHP_SAPI,
     'loaded' => \extension_loaded('ffi'),
     'status' => Runtime::getStatus(),
