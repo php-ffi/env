@@ -8,7 +8,7 @@
     <a href="https://raw.githubusercontent.com/php-ffi/env/master/LICENSE.md"><img src="https://poser.pugx.org/ffi/env/license?style=for-the-badge" alt="License MIT"></a>
 </p>
 <p align="center">
-    <a href="https://github.com/php-ffi/env/actions"><img src="https://github.com/php-ffi/env/workflows/build/badge.svg"></a>
+    <a href="https://github.com/php-ffi/env/actions"><img src="https://github.com/php-ffi/env/actions/workflows/tests.yml/badge.svg" alt="Tests"></a>
 </p>
 
 A set of API methods for working with the FFI environment.
