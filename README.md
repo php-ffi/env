@@ -1,7 +1,7 @@
 # FFI Environment
 
 <p align="center">
-    <a href="https://packagist.org/packages/ffi/env"><img src="https://poser.pugx.org/ffi/env/require/php?style=for-the-badge" alt="PHP 8.1+"></a>
+    <a href="https://packagist.org/packages/ffi/env"><img src="https://poser.pugx.org/ffi/env/require/php?style=for-the-badge" alt="PHP 7.4+"></a>
     <a href="https://packagist.org/packages/ffi/env"><img src="https://poser.pugx.org/ffi/env/version?style=for-the-badge" alt="Latest Stable Version"></a>
     <a href="https://packagist.org/packages/ffi/env"><img src="https://poser.pugx.org/ffi/env/v/unstable?style=for-the-badge" alt="Latest Unstable Version"></a>
     <a href="https://packagist.org/packages/ffi/env"><img src="https://poser.pugx.org/ffi/env/downloads?style=for-the-badge" alt="Total Downloads"></a>

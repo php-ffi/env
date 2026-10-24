@@ -4,30 +4,43 @@ on:
   push:
   pull_request:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  psalm:
+  codestyle:
     name: Code Style
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        php: [ '8.3' ]
-        os: [ ubuntu-latest ]
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
     steps:
       - name: Set Git To Use LF
         run: |
           git config --global core.autocrlf false
           git config --global core.eol lf
       - name: Checkout
-        uses: actions/checkout@v3.3.0
-      - name: Setup PHP ${{ matrix.php }}
+        uses: actions/checkout@v4
+      - name: Setup PHP 8.5
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
+          php-version: '8.5'
+          tools: composer:v2
+          extensions: ffi
+          ini-values: ffi.enable=1, memory_limit=-1
       - name: Validate Composer
         run: composer validate
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        shell: bash
+        run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
+      - name: Restore Composer Cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-8.5-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-8.5-composer-
       - name: Install Dependencies
-        uses: nick-invision/retry@v2
+        uses: nick-fields/retry@v3
         with:
           timeout_minutes: 5
           max_attempts: 5
